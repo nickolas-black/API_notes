@@ -4,7 +4,7 @@ from notes.models import Note
 
 
         
- class NoteSerializer(Serializer):
+class NoteSerializer(Serializer):
      id = IntegerField(read_only=True)
      title = CharField(required=True, max_length=250)
      text = CharField(required=False, allow_blank=True)
@@ -17,3 +17,4 @@ from notes.models import Note
          instance.text = validated_data.get('text', instance.text)
          instance.save()
          return instance
+         
