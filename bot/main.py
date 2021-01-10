@@ -1,8 +1,22 @@
+import requests
 from flask import Flask
 from flask.views import MethodView
 from flask import request
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
+TOKEN = os.environ.get('TOKEN')
+TELEGRAM_URL = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
+
+
+def sen_message(chat_id, msg):
+    session = requests.Session()
+    r = session.get(TELEGRAM_URL, params=(chat_id=chat_id, text=msg, parse_mode='Markdown'))
+    return r.json()
+
 
 
 def parse_text(text_msg):
