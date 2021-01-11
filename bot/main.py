@@ -4,8 +4,7 @@ from flask import Flask
 from flask.views import MethodView
 from flask import request
 import os
-from dotenv import load_dotenv
-load_dotenv()
+
 
 app = Flask(__name__)
 TOKEN = os.environ.get('TOKEN')
@@ -122,7 +121,7 @@ class BotAPI(MethodView):
             send_message(chat_id, text)
         return '<h1> Hi Telegram_Class!!! </h1>'
 
-app.add_url_rule('/TOKEN/', view_func=BotAPI.as_view('bot'))
+app.add_url_rule(f'(/TOKEN/)', view_func=BotAPI.as_view('bot'))
 
 if __name__ == '__main__':
     app.run()
