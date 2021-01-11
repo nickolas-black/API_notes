@@ -6,8 +6,8 @@ python -m flask run
 
 
 -- for Windows and Linux --
+для отладки в процессе разработки
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True,use_reloader=True)
 
-    
